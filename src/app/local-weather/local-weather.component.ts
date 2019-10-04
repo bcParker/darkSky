@@ -27,5 +27,35 @@ export class LocalWeatherComponent implements OnInit {
       this.long = 86.1275;
     }
   }
+  getWeather() {
+    this.weather.currentWeather(this.lat, this.long).subscribe(data => console.log(data))
+  }
+
+  weatherIcon(icon) {
+    switch(icon) {
+      case 'partly-cloudy-day':
+        return 'wi wi-day-cloudy'
+      case 'clear-day':
+        return 'wi wi-day-sunny'
+      case 'partly-cloudy-night':
+        return 'wi wi-night-cloudy'
+      case 'clear-night':
+        return 'wi wi-night-clear'
+      case 'rain': 
+        return 'wi wi-day-rain'
+      case 'snow':
+        return 'wi wi-day-snow'
+      case 'sleet':
+        return 'wi wi-day-sleet'
+      case 'wind':
+        return 'wi wi-day-cloudy'
+      case 'fog':
+        return 'wi wi-day-fog'
+      case 'cloudy':
+        return 'wi wi-day-cloudy'
+      default: 
+        return 'wi wi-day-sunny'
+    }
+  }
 
 }
