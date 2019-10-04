@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/do'
+//import 'rxjs/add/operator/do'
 
 @Component({
   selector: 'app-local-weather',
@@ -12,7 +12,7 @@ export class LocalWeatherComponent implements OnInit {
 
   lat: number;
   long: number;
-  localWeather: Observable<any>;
+  localWeather;
 
   constructor(private weather: WeatherService) { }
 
@@ -28,7 +28,7 @@ export class LocalWeatherComponent implements OnInit {
     }
   }
   getWeather() {
-    this.weather.currentWeather(this.lat, this.long).subscribe(data => console.log(data))
+    this.localWeather = this.weather.currentWeather(this.lat, this.long).subscribe(data => console.log(data))
   }
 
   weatherIcon(icon) {
